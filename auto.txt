@@ -1,0 +1,34 @@
+reply = () => {
+//const args = [':sosad: chẳng biết j với con ','K có vốn nữa',' chán quá các bác ơi ','bác  nào có kèo thơm cho em hít với ',' h mà nhảy là mất hết ','Hold to die bác ơi :doubt: ','đạ mấu lại đu đỉnh','ai hodl bch với e ko','thím nào mới nhảy ' , 'vài người nữa nhảy cho nó'];
+const args = ['test auto so 1','so la no','test tinh nang ','auto test uppppp ',' upppppppppppp ','len nao upppppppp ','uppppppp len','upppppppppppp' , 'upppppppppppp '];
+ const x=Math.floor((Math.random() * 8) + 1);
+ const message = args[x];
+
+
+    const threadID = window.location.href.replace(/[^\d]/g, ''); 
+    const form = {
+        'message': message,
+        'securitytoken': document.documentElement.outerHTML.match('name="securitytoken" value="(.*)"')[1],
+        'do': 'postreply',
+        's': ''
+    };
+    formBody = [];
+    for (let property in form) {
+      let encodedKey = encodeURIComponent(property);
+      let encodedValue = encodeURIComponent(form[property]);
+      formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
+    fetch('https://vozforums.com/newreply.php?do=postreply&noquote=1&t=7247077',
+        {
+            method: 'POST',
+            credentials: "same-origin",
+            body: formBody,
+            headers: new Headers({
+                'Content-Type': 'application/x-www-form-urlencoded'
+            })
+        }
+    );
+}
+reply();
+setInterval(reply, 30 * 1000);
